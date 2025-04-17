@@ -54,12 +54,7 @@ class GodotPositionReportingProcessor extends AudioWorkletProcessor {
 			if (input.length > 0) {
 				this.position += input[0].length;
 			}
-		}
 
-		// Posting messages is expensive. Let's limit the number of posts.
-		if (currentTime - this.lastPostTime > POST_THRESHOLD_S) {
-			this.lastPostTime = currentTime;
-			this.port.postMessage({ type: 'position', data: this.position });
 		}
 
 		return true;
